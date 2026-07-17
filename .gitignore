@@ -1,0 +1,11 @@
+node_modules/
+dist/
+graphify-out/
+.env
+.env.*
+!.env.example
+*.local
+*.log
+firebase-service-account*.json
+service-account*.json
+outputs/

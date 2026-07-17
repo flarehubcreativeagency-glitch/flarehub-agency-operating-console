@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Guidance only. Real CRM protection must come from authentication, route guards,
+# runtime guards, backend guards, and database rules.
