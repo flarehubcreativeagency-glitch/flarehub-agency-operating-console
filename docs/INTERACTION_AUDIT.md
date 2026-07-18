@@ -6,7 +6,7 @@ Scope: Dashboard, Clients / CRM, Projects, Project Room, Task Detail, Project Ch
 
 | Metric | Result |
 |---|---:|
-| Total primary screens checked | 13 |
+| Total primary screens checked | 15 |
 | Dead buttons found | 18 |
 | Buttons fixed | 18 |
 | Buttons disabled with reason | 0 |
@@ -44,6 +44,8 @@ Scope: Dashboard, Clients / CRM, Projects, Project Room, Task Detail, Project Ch
 | Files / Drive | File rows | Inspect file/contract status | Read-only module list | Shows safe demo scope/status only | `canReadFileContract` documented | PASS | Source inspection |
 | Finance Lite | Finance rows | Inspect finance records | Guarded list | Filters with `canReadFinance` | Owner/Admin/Finance/financeAccess | PASS | Unit tests |
 | Users & Permission | User rows | Inspect role matrix | Guarded list | Owner/Admin route only | `canAccessRoute` | PASS | Unit tests |
+| People / Workload | Workload rows | Inspect team capacity and project membership | Scaffolded module list | Shows fictional team workload and status only | Internal authenticated route | PASS | Source inspection |
+| Talent Pool | Talent rows | Park future vendor/freelancer/ATS foundation | Scaffolded parking-lot module | Shows safe locked roadmap with no real candidate data | Client/candidate portal not enabled | PASS | Source inspection |
 | Activity Log | Audit rows | Inspect immutable activity | Guarded list | Owner/Admin route only; rule model denies update/delete | Audit protected | PASS | Unit tests |
 | Settings | System tabs | Switch settings section | Static active state | Switches active tab and visible panel label | Owner/Admin route | FIXED | Source QA |
 | Settings | Dong bo file mo phong | Drive sync placeholder | Previously dead button | Safe toast: no real Drive sync, no credentials | No real integration | FIXED | Source QA |

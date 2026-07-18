@@ -40,6 +40,8 @@ type Screen =
   | 'files'
   | 'finance'
   | 'users'
+  | 'people'
+  | 'talent'
   | 'activity'
   | 'settings'
   | 'profile';
@@ -69,6 +71,8 @@ const navGroups: { label: string; items: { id: Screen; label: string; icon: type
     items: [
       { id: 'finance', label: 'Finance Lite', icon: CircleDollarSign },
       { id: 'users', label: 'Users & Quyền truy cập', icon: UserRound },
+      { id: 'people', label: 'People / Workload', icon: UsersRound },
+      { id: 'talent', label: 'Talent Pool', icon: BriefcaseBusiness },
       { id: 'activity', label: 'Activity Log', icon: Activity },
       { id: 'settings', label: 'Settings', icon: Settings }
     ]
@@ -398,6 +402,8 @@ function ModuleScreen({ screen, user }: { screen: Screen; user: User }) {
   if (screen === 'files') return <SimpleList title="Files / Drive" rows={files.map((file) => [file.id, `${file.type} · ${file.status} · ${file.permissionScope}`])} />;
   if (screen === 'finance') return <SimpleList title="Finance Lite" rows={financeRecords.filter((record) => canReadFinance(user, record)).map((record) => [record.type, `${formatMoney(record.amount)} · ${record.status}`])} />;
   if (screen === 'users') return <SimpleList title="Users & Quyền truy cập" rows={users.map((item) => [item.name, `${item.role} · Finance: ${item.financeAccess ? 'Có' : 'Không'} · ${item.status}`])} />;
+  if (screen === 'people') return <SimpleList title="People / Workload" rows={users.filter((item) => item.role !== 'Client').map((item) => [item.name, `${item.department} · ${item.projectMemberships.length} dự án · ${item.status}`])} />;
+  if (screen === 'talent') return <SimpleList title="Talent Pool" rows={[['Vendor-Freelancer Pool', 'Parking lot đã khóa ở demo · cần owner approval để kích hoạt workflow thật'], ['UI Contractor Bench', 'Scaffold future ATS · không chứa dữ liệu ứng viên thật'], ['Partner Creative Network', 'Danh sách hư cấu · chưa mở cổng client/candidate']]} />;
   if (screen === 'activity') return <SimpleList title="Activity Log" rows={activityLogs.map((log) => [log.action, `${log.objectType} · ${log.visibility}`])} />;
   if (screen === 'calendar') return <SimpleList title="Lịch & Milestone" rows={projects[0].milestones.map((milestone) => [milestone.title, `${milestone.date} · ${milestone.status}`])} />;
   return <ProjectRoom />;
